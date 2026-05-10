@@ -22,20 +22,22 @@ def add_issue():
         issue_category = request.form["issue_category"]
         downtime_minutes = request.form["downtime_minutes"]
         shift = request.form["shift"]
+        report_date = request.form["report_date"]
         status = request.form["status"]
 
         conn = get_db_connection()
         cursor = conn.cursor()
 
         cursor.execute("""
-            INSERT INTO issues
-            (machine_name, issue_category, downtime_minutes, shift, status)
-            VALUES (?, ?, ?, ?, ?)
+            IINSERT INTO issues
+            (machine_name, issue_category, downtime_minutes, shift, report_date, status)
+            VALUES (?, ?, ?, ?, ?, ?)
         """, (
             machine_name,
             issue_category,
             downtime_minutes,
             shift,
+            report_date,
             status
         ))
 

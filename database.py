@@ -13,11 +13,11 @@ def init_db():
     conn = get_db_connection()
 
     conn.execute("""
-        CREATE TABLE IF NOT EXISTS downtime_reports (
+        CREATE TABLE IF NOT EXISTS issues    (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             machine_name TEXT NOT NULL,
             issue_category TEXT NOT NULL,
-            issues INTEGER NOT NULL,
+            downtime_minutes INTEGER NOT NULL,
             shift TEXT NOT NULL,
             report_date TEXT NOT NULL,
             status TEXT NOT NULL
