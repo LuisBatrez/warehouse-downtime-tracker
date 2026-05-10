@@ -1,37 +1,12 @@
 from flask import Flask, render_template, request, redirect
-from database import init_db
-import sqlite3
-
+from database import init_db, get_db_connection
 
 app = Flask(__name__)
 
-
-def init_db():
-    conn = sqlite3.connect("database.db")
-    cursor = conn.cursor()
-
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS issues (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            machine_name TEXT NOT NULL,
-            issue_category TEXT NOT NULL,
-            downtime_minutes INTEGER NOT NULL,
-            shift TEXT NOT NULL,
-            status TEXT NOT NULL
-        )
-    """)
-
-    conn.commit()
-    conn.close()
-
-
 @app.route("/")
 def home():
-    conn = sqlite3.connect("database.db")
-    cursor = conn.cursor()
-
-    cursor.execute("SELECT * FROM issues")
-    issues = cursor.fetchall()
+    conn = get_db_connection()
+    issues = conn.execute("SELECT * FROM issues").fetchall()
 
     conn.close()
 
