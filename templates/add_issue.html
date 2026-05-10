@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Issue</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Add Machine Issue</h1>
+
+        <form method="POST">
+
+            <label>Machine Name</label>
+            <input type="text" name="machine_name" required>
+
+            <label>Issue Category</label>
+            <input type="text" name="issue_category" required>
+
+            <label>Downtime Minutes</label>
+            <input type="number" name="downtime_minutes" required>
+
+            <label>Shift</label>
+            <input type="text" name="shift" required>
+
+            <label>Status</label>
+            <select name="status">
+
+                <option value="Open">Open</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Resolved">Resolved</option>
+
+            </select>
+
+            <button type="submit">Submit Issue</button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

@@ -10,12 +10,39 @@
 <body>
 
     <div class="container">
+
         <h1>Warehouse Downtime Tracker</h1>
 
-        <p>
-            Track machine downtime, operational issues,
-            and warehouse performance metrics.
-        </p>
+        <a href="/add">
+            <button>Add Machine Issue</button>
+        </a>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Machine</th>
+                <th>Category</th>
+                <th>Downtime</th>
+                <th>Shift</th>
+                <th>Status</th>
+            </tr>
+
+            {% for issue in issues %}
+
+            <tr>
+                <td>{{ issue[0] }}</td>
+                <td>{{ issue[1] }}</td>
+                <td>{{ issue[2] }}</td>
+                <td>{{ issue[3] }} mins</td>
+                <td>{{ issue[4] }}</td>
+                <td>{{ issue[5] }}</td>
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
     </div>
 
 </body>
