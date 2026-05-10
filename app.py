@@ -29,9 +29,9 @@ def add_issue():
         cursor = conn.cursor()
 
         cursor.execute("""
-            IINSERT INTO issues
-            (machine_name, issue_category, downtime_minutes, shift, report_date, status)
-            VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO issues
+        (machine_name, issue_category, downtime_minutes, shift, report_date, status)
+        VALUES (?, ?, ?, ?, ?, ?)
         """, (
             machine_name,
             issue_category,
@@ -47,6 +47,55 @@ def add_issue():
         return redirect("/")
 
     return render_template("add_issue.html")
+
+@app.route("/database")
+def database():
+
+    conn = get_db_connection()
+
+    issues = conn.execute("""
+        SELECT * FROM issues
+        ORDER BY report_date DESC
+    """).fetchall()
+
+    conn.close()
+
+    return render_template(
+        "database.html",
+        issues=issues
+    )
+
+
+@app.route("/search")
+def search():
+
+    query = request.args.get("query")
+
+    conn = get_db_connection()
+
+    if query:
+
+        issues = conn.execute("""
+            SELECT * FROM issues
+            WHERE machine_name LIKE ?
+            OR issue_category LIKE ?
+            OR status LIKE ?
+        """, (
+            f"%{query}%",
+            f"%{query}%",
+            f"%{query}%"
+        )).fetchall()
+
+    else:
+
+        issues = []
+
+    conn.close()
+
+    return render_template(
+        "search.html",
+        issues=issues
+    )
 
 
 if __name__ == "__main__":

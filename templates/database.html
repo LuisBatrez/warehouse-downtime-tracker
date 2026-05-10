@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Database Records</h2>
+
+<table>
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Machine</th>
+            <th>Category</th>
+            <th>Downtime</th>
+            <th>Shift</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for issue in issues %}
+
+        <tr>
+            <td>{{ issue.id }}</td>
+            <td>{{ issue.machine_name }}</td>
+            <td>{{ issue.issue_category }}</td>
+            <td>{{ issue.downtime_minutes }} min</td>
+            <td>{{ issue.shift }}</td>
+            <td>{{ issue.report_date }}</td>
+            <td>{{ issue.status }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

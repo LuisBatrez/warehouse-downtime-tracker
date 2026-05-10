@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Issue Details</h2>
+
+<div class="issue-card">
+
+    <p><strong>ID:</strong> {{ issue.id }}</p>
+
+    <p><strong>Machine:</strong> {{ issue.machine_name }}</p>
+
+    <p><strong>Category:</strong> {{ issue.issue_category }}</p>
+
+    <p><strong>Downtime:</strong> {{ issue.downtime_minutes }} minutes</p>
+
+    <p><strong>Shift:</strong> {{ issue.shift }}</p>
+
+    <p><strong>Date:</strong> {{ issue.report_date }}</p>
+
+    <p><strong>Status:</strong> {{ issue.status }}</p>
+
+</div>
+
+<a href="/">
+    Back to Dashboard
+</a>
+
+{% endblock %}

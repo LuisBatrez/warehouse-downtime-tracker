@@ -1,49 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Issue</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% block content %}
 
-    <div class="container">
+<h2>Add Downtime Issue</h2>
 
-        <h1>Add Machine Issue</h1>
+<form method="POST">
 
-        <form method="POST">
+    <label>Machine Name</label>
 
-            <label>Machine Name</label>
-            <input type="text" name="machine_name" required>
+    <input
+        type="text"
+        name="machine_name"
+        required
+    >
 
-            <label>Issue Category</label>
-            <input type="text" name="issue_category" required>
+    <label>Issue Category</label>
 
-            <label>Downtime Minutes</label>
-            <input type="number" name="downtime_minutes" required>
+    <input
+        type="text"
+        name="issue_category"
+        required
+    >
 
-            <label>Shift</label>
-            <input type="text" name="shift" required>
+    <label>Downtime Minutes</label>
 
-            <label for="report_date">Report Date</label>
-            <input type="date" name="report_date" required>
+    <input
+        type="number"
+        name="downtime_minutes"
+        required
+    >
 
-            <label>Status</label>
-            <select name="status">
+    <label>Shift</label>
 
-                <option value="Open">Open</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Resolved">Resolved</option>
+    <select name="shift" required>
+        <option value="Day">Day</option>
+        <option value="Night">Night</option>
+    </select>
 
-            </select>
+    <label>Report Date</label>
 
-            <button type="submit">Submit Issue</button>
+    <input
+        type="date"
+        name="report_date"
+        required
+    >
 
-        </form>
+    <label>Status</label>
 
-    </div>
+    <select name="status" required>
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Resolved">Resolved</option>
+    </select>
 
-</body>
-</html>
+    <button type="submit">
+        Submit Issue
+    </button>
+
+</form>
+
+{% endblock %}

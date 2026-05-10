@@ -1,49 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Warehouse Downtime Tracker</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
+{% block content %}
 
-    <div class="container">
+<h2>Reported Issues</h2>
 
-        <h1>Warehouse Downtime Tracker</h1>
+<table>
 
-        <a href="/add">
-            <button>Add Machine Issue</button>
-        </a>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Machine</th>
+            <th>Category</th>
+            <th>Downtime</th>
+            <th>Shift</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
 
-        <table>
+    <tbody>
 
-            <tr>
-                <th>ID</th>
-                <th>Machine</th>
-                <th>Category</th>
-                <th>Downtime</th>
-                <th>Shift</th>
-                <th>Status</th>
-            </tr>
+        {% for issue in issues %}
 
-            {% for issue in issues %}
+        <tr>
+            <td>{{ issue.id }}</td>
+            <td>{{ issue.machine_name }}</td>
+            <td>{{ issue.issue_category }}</td>
+            <td>{{ issue.downtime_minutes }} min</td>
+            <td>{{ issue.shift }}</td>
+            <td>{{ issue.report_date }}</td>
+            <td>{{ issue.status }}</td>
+        </tr>
 
-            <tr>
-                <td>{{ issue[0] }}</td>
-                <td>{{ issue[1] }}</td>
-                <td>{{ issue[2] }}</td>
-                <td>{{ issue[3] }} mins</td>
-                <td>{{ issue[4] }}</td>
-                <td>{{ issue[5] }}</td>
-            </tr>
+        {% endfor %}
 
-            {% endfor %}
+    </tbody>
 
-        </table>
+</table>
 
-    </div>
-
-</body>
-</html>
+{% endblock %}

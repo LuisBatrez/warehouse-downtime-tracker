@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit Issue</h2>
+
+<form method="POST">
+
+    <label>Machine Name</label>
+
+    <input
+        type="text"
+        name="machine_name"
+        value="{{ issue.machine_name }}"
+        required
+    >
+
+    <label>Issue Category</label>
+
+    <input
+        type="text"
+        name="issue_category"
+        value="{{ issue.issue_category }}"
+        required
+    >
+
+    <label>Downtime Minutes</label>
+
+    <input
+        type="number"
+        name="downtime_minutes"
+        value="{{ issue.downtime_minutes }}"
+        required
+    >
+
+    <label>Shift</label>
+
+    <select name="shift">
+
+        <option value="Day">Day</option>
+        <option value="Night">Night</option>
+
+    </select>
+
+    <label>Report Date</label>
+
+    <input
+        type="date"
+        name="report_date"
+        value="{{ issue.report_date }}"
+        required
+    >
+
+    <label>Status</label>
+
+    <select name="status">
+
+        <option value="Open">Open</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Resolved">Resolved</option>
+
+    </select>
+
+    <button type="submit">
+        Save Changes
+    </button>
+
+</form>
+
+{% endblock %}
