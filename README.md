@@ -59,14 +59,35 @@ warehouse-downtime-tracker/
 ├── app.py
 ├── database.py
 ├── requirements.txt
+├── README.md
+├── .gitignore
+│
 ├── static/
-│   └── style.css
+│   ├── style.css
+│   ├── dashboard.css
+│   └── scripts.js
+│
 ├── templates/
+│   ├── base.html
 │   ├── index.html
 │   ├── add_issue.html
 │   ├── database.html
-│   └── search.html
-└── README.md
+│   ├── search.html
+│   ├── issue_detail.html
+│   └── edit_issue.html
+│
+├── charts/
+│   └── chart_generator.py
+│
+├── utils/
+│   ├── filters.py
+│   └── statistics.py
+│
+├── data/
+│   └── database.db
+│
+└── screenshots/
+    └── dashboard-preview.png
 ```
 
 ## Installation

@@ -17,7 +17,7 @@ def init_db():
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             machine_name TEXT NOT NULL,
             issue_category TEXT NOT NULL,
-            downtime_minutes INTEGER NOT NULL,
+            issues INTEGER NOT NULL,
             shift TEXT NOT NULL,
             report_date TEXT NOT NULL,
             status TEXT NOT NULL

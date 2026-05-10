@@ -24,7 +24,7 @@ def add_issue():
         shift = request.form["shift"]
         status = request.form["status"]
 
-        conn = sqlite3.connect("database.db")
+        conn = get_db_connection()
         cursor = conn.cursor()
 
         cursor.execute("""
